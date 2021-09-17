@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="icon" href="../assets/svg/kode-camp-logo.svg" />
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kode Camp</title>
+    <link rel="stylesheet" href="../styles/signup.css" />
+  </head>
+  <body>
+    <main class="page">
+      <section class="hero-section">
+        <label class="kodecamp-label">KodeCamp </label>
+        <span class="hero-text">
+          <h1>join our next cohort</h1>
+          <p>An internship that changes newbies to probies</p>
+        </span>
+      </section>
+      <section class="form-section">
+        <div class="top-icon-container">
+          <img src="../assets/svg/kode-camp-logo.svg" alt="kode-camp-logo" />
+        </div>
+        <span class="heading-container">sign up</span>
+        <form class="signup-form">
+          <div class="grid">
+            <div class="input-container">
+              <label for="firstName">First Name</label>
+              <input type="text" name="firstName" id="firstName" />
+            </div>
+            <div class="input-container">
+              <label for="lastName">Last Name</label>
+              <input type="text" name="lastName" id="lastName" />
+            </div>
+            <div class="input-container">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" />
+            </div>
+            <div class="input-container">
+              <label for="gender">Gender</label>
+              <div class="gender-option-btn-container">
+                <input type="radio" name="gender" id="male" value="male" />
+                <label for="male">Male</label>
+                <input type="radio" name="gender" id="female" value="female" />
+                <label for="female">Female</label>
+                <input type="radio" name="gender" id="other" />
+                <label for="other">Other</label>
+              </div>
+            </div>
+            <div class="input-container">
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password" />
+            </div>
+            <div class="input-container">
+              <label for="confirmPassword">Confirm Password</label>
+              <input
+                type="password"
+                name="confirmPassword"
+                id="confirmPassword"
+              />
+            </div>
+            <div class="input-container">
+              <label for="eduLvl">Educational Level</label>
+              <select name="eduLvl" id="eduLvl">
+                <option value="" disabled="disabled" selected>...select</option>
+                <option value="jssce">Junior school</option>
+                <option value="ssce">High school</option>
+                <option value="underGrad">Under graduate</option>
+                <option value="postgrad">Post graduate</option>
+              </select>
+            </div>
+            <div class="input-container">
+              <label for="expLvl">Experience Level</label>
+              <select name="expLvl" id="expLvl">
+                <option value="" disabled="disabled" selected>...select</option>
+                <option value="beginner">Beginner</option>
+                <option value="intermediate">Intermediate</option>
+                <option value="advanced">Advanced</option>
+                <option value="midLvl">Mid-level</option>
+                <option value="seniorLvl">Senior-level</option>
+              </select>
+            </div>
+            <div class="input-container span-two">
+              <label for="aboutYou">Tell us about yourself</label>
+              <textarea name="aboutUser" id="aboutYou"></textarea>
+            </div>
+          </div>
+          <div class="submit-btn-container">
+            <button type="submit" class="submit-btn">Create Account</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

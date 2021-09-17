@@ -1,0 +1,193 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+:root {
+  /* font sizes */
+  --hero-text-h1: 1.6rem;
+  --hero-text-p: 1rem;
+  --signup-heading: 1.5rem;
+  --medium: 1.3rem;
+
+  /* font */
+  --playfair-display: "Playfair Display", serif;
+  --poppins: "Poppins", sans-serif;
+}
+
+body {
+  font-family: var(--playfair-display);
+}
+
+.page {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.hero-section {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: rgba(0, 0, 0, 0.705);
+  background-image: url("../assets/images/hero-section-img.png");
+  background-blend-mode: darken;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: white;
+  min-height: 100vh;
+}
+
+.hero-text {
+  transform: translateY(-30vh);
+}
+
+.kodecamp-label {
+  font-weight: 900;
+  font-size: var(--medium);
+}
+
+.hero-text h1 {
+  font-family: var(--poppins);
+  font-size: var(--hero-text-h1);
+  text-transform: uppercase;
+}
+
+.hero-text p {
+  font-size: var(--hero-text-p);
+}
+
+.form-section {
+  min-height: 100vh;
+}
+
+.top-icon-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.heading-container {
+  font-size: var(--signup-heading);
+  font-weight: 800;
+  color: #086db8;
+  background-color: tom;
+  text-transform: capitalize;
+}
+
+.top-icon-container,
+.heading-container {
+  width: 100%;
+  padding: 1rem;
+}
+
+.signup-form {
+  /* padding: 1.5rem; */
+  height: 100%;
+}
+.signup-form
+  :is(input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus, select:focus) {
+  outline: 1px solid #0093e9;
+  border: 1px solid #0093e9;
+}
+
+.input-container,
+.submit-btn-container {
+  display: flex;
+  padding: 2em;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.input-container
+  :is(input[type="text"], input[type="email"], input[type="password"], select) {
+  padding: 0.5rem;
+  width: 100%;
+}
+
+.input-container select {
+  background: transparent;
+}
+
+.input-container :is(input, select, textarea) {
+  border: 1px solid #000000a4;
+}
+
+.input-container textarea {
+  resize: none;
+  height: 59px;
+}
+
+.gender-option-btn-container {
+  display: flex;
+  gap: 1rem;
+}
+
+.submit-btn-container {
+  align-items: center;
+  justify-content: center;
+}
+
+.submit-btn {
+  border: none;
+  outline: none;
+  color: #ffffff;
+  padding: 0.5rem;
+  width: 40%;
+  background: #3e53c4;
+  box-sizing: border-box;
+  border-radius: 10px 0px;
+  cursor: pointer;
+}
+.submit-btn:hover {
+  color: #3e53c4;
+  background-color: whitesmoke;
+}
+
+@media screen and (min-width: 1023px) {
+  :root {
+    --hero-text-h1: 1.7rem;
+    --hero-text-p: 1.2rem;
+    --medium: 1.7rem;
+  }
+  body {
+    overflow: hidden;
+  }
+  .page {
+    flex-direction: row;
+    height: 100vh;
+  }
+
+  .hero-section {
+    overflow: hidden;
+    width: 30%;
+  }
+
+  .form-section {
+    overflow-y: auto;
+    width: 70%;
+    height: 100vh;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(2, 0.5fr);
+    grid-template-rows: repeat(3, 0.5fr);
+  }
+
+  .span-two {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .submit-btn-container {
+    justify-content: flex-start;
+    align-items: flex-end;
+  }
+  .submit-btn {
+    width: 20%;
+    grid-column: 2;
+  }
+}
