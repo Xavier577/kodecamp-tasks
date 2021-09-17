@@ -11,17 +11,18 @@ body {
 }
 
 .page {
+  padding-bottom: 2rem;
   width: 100%;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
 }
 
 .welcome-text {
   position: absolute;
-  color: #352a16;
+  color: #f1f1f1;
   top: 30%;
   font-size: 1.5rem;
   font-weight: 800;
@@ -51,12 +52,104 @@ body {
 .about-us-heading {
   padding: 2rem;
   font-size: 1.5rem;
+  align-items: space-around;
+}
+
+.about-us-heading::after {
+  content: "";
+  position: absolute;
+  transform: translateX(-200%) translateY(30px);
+  width: 50px;
+  height: 0.18rem;
+  background-color: #d89616;
+}
+
+.about-us-text {
+  padding: 1.5rem;
+  line-break: strict;
+  line-height: 1.35rem;
 }
 
 .contact-us {
-  background: #ffffff;
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 10px;
-  width: 50%;
-  height: 50%;
+  max-width: 850px;
+  padding: 0.5rem;
+  width: 100%;
+  height: auto;
+}
+
+.contact-us-text {
+  position: relative;
+}
+
+.contact-form {
+  width: 100%;
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+}
+
+.input-container :is(input, textarea) {
+  padding: 0.5rem;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+#message {
+  height: 10rem;
+  resize: none;
+}
+
+.submit-btn-container {
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.signup-text a {
+  text-decoration: none;
+  color: hsla(220, 100%, 45%, 0.76);
+}
+.submit-btn {
+  width: 20%;
+  padding: 0.5rem;
+  background: hsla(220, 100%, 45%, 0.76);
+  color: whitesmoke;
+  border-radius: 8px;
+  border: none;
+}
+
+@media screen and (min-width: 1023px) {
+  .page {
+    gap: 3rem;
+  }
+  .welcome-text {
+    text-align: center;
+    margin-top: 2rem;
+    position: relative;
+    color: #000000;
+  }
+
+  .about-us {
+    flex-direction: row;
+    width: 90%;
+  }
+
+  .about-us-text-container {
+    width: 60%;
+  }
+
+  .contact-us {
+    background: #ffffff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 10px;
+    width: 80%;
+  }
 }

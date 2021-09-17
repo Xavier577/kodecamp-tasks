@@ -17,7 +17,7 @@
         </div>
         <div class="about-us-text-container">
           <span class="about-us-heading">
-            Who we Are? <span class="short-line"></span>
+            Who we Are? </span>
           </span>
           <span class="about-us-text">
             <p>
@@ -29,6 +29,7 @@
               mollitia, libero soluta reprehenderit officia veritatis voluptatum
               nesciunt porro culpa doloribus ullam et error?
             </p>
+            <br>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Corrupti
               repellendus quo tempore hic laborum mollitia ex praesentium
@@ -42,8 +43,8 @@
         </div>
       </div>
       <div class="contact-us">
-        <span class="contact-us-text">Contact us</span>
-        <form>
+        <div class="contact-us-text"><h1>Contact Us</h1></div>
+        <form class="contact-form">
           <div class="input-container">
             <label for="firstName">First Name</label>
             <input type="text" name="firstName" id="firstName" />
@@ -52,7 +53,16 @@
             <label for="lastName">Last Name</label>
             <input type="text" name="lastName" id="lastName" />
           </div>
-          <button type="submit">Submit</button>
+          <div class="input-container">
+            <label for="message">
+            Your Message
+            </label>
+            <textarea name="message" id="message"></textarea>
+          </div>
+          <div class="submit-btn-container">
+            <span class="signup-text">what to learn with us?  <a href="./signup.html">sign up</a></span>
+            <button type="submit" class="submit-btn">Submit</button>
+          </div>
         </form>
       </div>
     </main>
