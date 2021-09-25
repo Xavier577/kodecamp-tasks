@@ -344,4 +344,5 @@ body {
 
 .social-handles {
   font-size: 1.6rem;
+  cursor: pointer;
 }
