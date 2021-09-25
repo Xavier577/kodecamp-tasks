@@ -32,7 +32,8 @@ body {
 }
 
 .hero-section,
-.section {
+.section,
+.footer {
   position: relative;
   width: 100%;
 }
@@ -157,7 +158,9 @@ body {
   gap: 30px;
 }
 
-.section-3-form :is(input, button) {
+.section-3-form :is(input, button),
+.add-to-cart-btn,
+.subscribe-btn {
   padding: 0.5rem 1rem 0.5rem 1rem;
   border: none;
   outline: none;
@@ -169,8 +172,12 @@ body {
   color: #524c4c7e;
 }
 
-.section-3-form button {
+.section-3-form button,
+.add-to-cart-btn,
+.subscribe-btn {
   background-color: black;
+  padding-right: 2rem;
+  padding-left: 2rem;
   color: white;
   cursor: pointer;
 }
@@ -206,4 +213,135 @@ body {
   font-size: var(--big);
   font-family: var(--sacramento);
   color: palevioletred;
+}
+
+.section-5 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+}
+
+.item-slide {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 90%;
+  padding: 2rem;
+}
+
+.item-slide img {
+  width: 20%;
+}
+
+.forward-arrow {
+  color: white;
+  font-size: var(--bigger);
+  font-family: var(--roboto);
+}
+
+.section-6 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  height: 70vh;
+}
+
+.product-showcase {
+  display: flex;
+  gap: 10px;
+  width: 30%;
+}
+
+.product-showcase img {
+  width: 50%;
+}
+
+.sample-info {
+  width: 30%;
+  height: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: space-around;
+}
+
+.sample-heading {
+  font-family: var(--lora);
+  font-size: 1.7rem;
+}
+
+.sample-price {
+  font-weight: 600;
+  font-family: sans-serif;
+  font-size: 1.6rem;
+}
+.sample-info-text {
+  text-align: left;
+  font-family: var(--bellota-text);
+  font-weight: 500;
+}
+
+.add-to-cart-btn {
+  width: 40%;
+}
+
+.footer {
+  display: flex;
+
+  height: 80vh;
+}
+
+.footer img {
+  width: 45%;
+}
+
+.subscription {
+  display: flex;
+  width: 55%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.subscribe-heading {
+  color: black;
+}
+
+.subscribe-heading::before {
+  content: " ";
+  position: absolute;
+  background-color: #9e5d68;
+  width: 40%;
+  height: 10px;
+  transform: translateX(-20%);
+}
+
+.subscription-form {
+  height: 50%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.input-fields input {
+  padding: 0.5rem;
+  border: 1px solid #111111;
+}
+
+.input-fields input::placeholder {
+  color: #524c4c7e;
+}
+
+.more-info-text {
+  text-align: center;
+}
+
+.social-handles {
+  font-size: 1.6rem;
 }
