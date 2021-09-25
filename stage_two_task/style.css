@@ -1,0 +1,75 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,600&display=swap");
+
+:root {
+  /* Font sizes */
+  --bigger: 4rem;
+  --big: 3rem;
+  --medium: 2.5rem;
+  --small: 1.5rem;
+
+  /* Fonts */
+  --roboto: "Roboto", sans-serif;
+  --playfair-display: "Playfair Display", serif;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--playfair-display);
+}
+
+.hero-section,
+.section {
+  position: relative;
+  width: 100%;
+}
+
+.hero-section {
+  background-image: url("./assets/images/banner.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  height: 90vh;
+}
+
+.hamburger-icon,
+.hero-text-h1 {
+  color: white;
+}
+
+.hamburger-icon {
+  font-size: var(--medium);
+}
+
+.hero-text {
+  height: 40%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+
+.hero-text-h1 {
+  font-size: var(--bigger);
+  font-weight: 900;
+}
+
+.hero-text-p-box {
+  width: 50%;
+  height: 70%;
+  padding: 2.5rem 1.5rem 2rem 1.5rem;
+  background-color: white;
+  overflow-y: auto;
+}
+
+.section:nth-child(2n - 1) {
+  background-color: pink;
+}
