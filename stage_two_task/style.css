@@ -1,16 +1,24 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@1,400;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lora&family=Playfair+Display:ital,wght@1,400;1,600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Bellota+Text:wght@300&family=Sacramento&display=swap");
 
 :root {
   /* Font sizes */
   --bigger: 4rem;
-  --big: 3rem;
-  --medium: 2.5rem;
-  --small: 1.5rem;
+  --big: 2.5rem;
+  --medium: 2rem;
+  --small: 1rem;
 
   /* Fonts */
   --roboto: "Roboto", sans-serif;
   --playfair-display: "Playfair Display", serif;
+  --lora: "Lora", serif;
+  --bellota-text: "Bellota Text", cursive;
+  --sacramento: "Sacramento", cursive;
+
+  /* colors */
+  --primary: #cfa3aa;
 }
 
 * {
@@ -41,8 +49,14 @@ body {
 }
 
 .hamburger-icon,
-.hero-text-h1 {
+.hero-text-h1,
+.section-heading,
+.section-text {
   color: white;
+}
+
+.section-text {
+  font-family: var(--lora);
 }
 
 .hamburger-icon {
@@ -57,7 +71,8 @@ body {
   gap: 50px;
 }
 
-.hero-text-h1 {
+.hero-text-h1,
+.section-heading {
   font-size: var(--bigger);
   font-weight: 900;
 }
@@ -67,9 +82,128 @@ body {
   height: 70%;
   padding: 2.5rem 1.5rem 2rem 1.5rem;
   background-color: white;
+  font-family: var(--bellota-text);
   overflow-y: auto;
 }
 
 .section:nth-child(2n - 1) {
-  background-color: pink;
+  background-color: var(--primary);
+}
+
+.section-1 {
+  height: 65vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.section-1-text {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  padding-left: 5rem;
+  color: white;
+}
+
+.bold-text {
+  font-size: 1.7rem;
+  width: 65%;
+  line-height: 2.65rem;
+  text-align: justify;
+}
+
+.big-h {
+  font-weight: 900;
+  font-size: var(--big);
+}
+
+.light-text {
+  font-family: var(--lora);
+  width: 50%;
+  text-align: left;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.gallery-grid img {
+  width: 100%;
+  height: 100%;
+}
+
+.section-3 {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 30px;
+}
+
+.form-label {
+  display: none;
+}
+
+.section-3-form {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+.section-3-form :is(input, button) {
+  padding: 0.5rem 1rem 0.5rem 1rem;
+  border: none;
+  outline: none;
+  border-radius: 165px;
+  font-size: 0.75rem;
+}
+
+.section-3-form input::placeholder {
+  color: #524c4c7e;
+}
+
+.section-3-form button {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+
+.section-4 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 75vh;
+  padding: 2rem;
+}
+
+.section-4 img {
+  max-width: 25%;
+  max-height: 90%;
+}
+
+.section-4-text-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  gap: 10px;
+  width: 50%;
+  height: 90%;
+  padding: 2rem;
+}
+
+.section-4-text {
+  font-family: var(--lora);
+}
+
+.author-name {
+  font-size: var(--big);
+  font-family: var(--sacramento);
+  color: palevioletred;
 }
