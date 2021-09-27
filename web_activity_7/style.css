@@ -98,7 +98,6 @@ body {
 }
 
 .hero-text-container {
-  background-color: green;
   align-items: center;
   justify-content: flex-end;
   padding: var(--s3);
@@ -107,7 +106,6 @@ body {
 }
 
 .hero-text {
-  background-color: red;
   height: 50%;
   align-items: center;
   justify-content: center;
@@ -244,7 +242,6 @@ img {
     margin-top: var(--s3);
     width: 50%;
     height: 30%;
-    background-color: green;
   }
 
   .icon-with-label {
