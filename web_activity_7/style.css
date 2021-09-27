@@ -98,6 +98,7 @@ body {
 }
 
 .hero-text-container {
+  background-color: green;
   align-items: center;
   justify-content: flex-end;
   padding: var(--s3);
