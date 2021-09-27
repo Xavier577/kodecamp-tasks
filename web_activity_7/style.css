@@ -95,18 +95,21 @@ body {
   display: flex;
   flex-direction: column;
   color: var(--white);
-  align-items: center;
-  justify-content: flex-end;
 }
 
 .hero-text-container {
+  align-items: center;
+  justify-content: flex-end;
   padding: var(--s3);
   height: 40%;
   width: 80%;
 }
 
 .hero-text {
+  background-color: red;
   height: 50%;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-text-top {
@@ -240,11 +243,16 @@ img {
     margin-top: var(--s3);
     width: 50%;
     height: 30%;
+    background-color: green;
   }
 
-  .flex-column {
+  .icon-with-label {
     display: flex;
     flex-direction: column;
     gap: 25px;
+  }
+
+  .icon-with-label img {
+    width: 100%;
   }
 }
