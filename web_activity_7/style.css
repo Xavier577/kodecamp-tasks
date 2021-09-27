@@ -96,7 +96,7 @@ body {
   flex-direction: column;
   color: var(--white);
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
 }
 
 .hero-text-container {
