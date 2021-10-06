@@ -161,14 +161,12 @@ body {
 }
 
 .section-2-img-container {
-  position: relative;
   width: 100%;
   height: 60%;
 }
 
 .section-2-img-container img {
   width: 100%;
-  height: 100%;
 }
 
 .section-2-p {
@@ -184,9 +182,11 @@ body {
 
 .section-3 {
   background-image: url("./assets/images/bg-blur.jpg");
-  height: 100vh;
+  background-repeat: repeat-y;
+  background-size: cover;
+  height: 120vh;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
 }
 
 .section-3-img-container {
@@ -206,7 +206,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 40px;
   padding-bottom: 15px;
 }
@@ -276,7 +276,7 @@ body {
   background-color: var(--bright-red);
 }
 
-@media screen and (min-width: 1023px) {
+@media screen and (min-width: 1024px) {
   .hero-section {
     align-items: flex-start;
     background-size: cover;
@@ -288,17 +288,18 @@ body {
   }
 
   .hero-text {
-    font-size: 3.5rem;
+    font-size: 4rem;
+    font-weight: 900;
   }
 
   .underlined-services {
-    font-size: 6rem;
+    font-size: 6.2rem;
   }
-
   .underlined-services::after {
     width: 550px;
     transform: translateX(-550px) translateY(150px);
   }
+
   .hero-icons,
   .icon-article {
     display: flex;
@@ -340,6 +341,10 @@ body {
     height: 60%;
   }
 
+  .section-2-img-container img {
+    object-fit: contain;
+  }
+
   .section-2-p {
     width: 60%;
   }
@@ -374,10 +379,53 @@ body {
     justify-content: space-around;
     padding: 100px;
   }
+}
 
-  .section-4-service-icon {
-    width: 200px;
-    height: 200px;
-    border-radius: 100px;
+@media (min-width: 768px) and (max-width: 835px) {
+  .hero-section {
+    align-items: flex-start;
+  }
+  .hero-container {
+    transform: translateX(100px);
+  }
+
+  .hero-text {
+    font-size: 4rem;
+  }
+
+  .underlined-services {
+    font-size: 5rem;
+    font-weight: 900;
+  }
+
+  .underlined-services::after {
+    width: 500px;
+    transform: translateX(-450px) translateY(120px);
+  }
+
+  .section-2 {
+    height: 130vh;
+  }
+}
+
+@media screen and (min-width: 1900px) {
+  .hero-section {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hero-container {
+    transform: translateX(-350px);
+  }
+}
+@media (min-width: 800px) and (max-width: 1024px) {
+  .section-2 {
+    flex-direction: column;
+  }
+  .section-2,
+  .section-2-container-1,
+  .section-2-container-2 {
+    align-items: center;
+    justify-content: space-around;
   }
 }
