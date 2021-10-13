@@ -10,10 +10,6 @@ userRouter.get("/all", (req, res) => {
   res.json(mockData);
 });
 
-userRouter.post("/all", (req, res) => {
-  console.log(req.body);
-});
-
 // get a single user with an id
 userRouter.get("/:id", (req, res) => {
   const { id } = req.params;
