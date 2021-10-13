@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rest api tester</title>
+    <style>
+      body {
+        background-color: whitesmoke;
+      }
+
+      #request-form {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        width: 100%;
+      }
+
+      .input-output-section {
+        width: 100%;
+        display: flex;
+        height: 400px;
+      }
+
+      textarea {
+        font-family: monospace;
+        height: 100%;
+        width: 50%;
+        font-size: 1.2rem;
+        resize: horizontal;
+      }
+
+      .request-result-box {
+        flex-grow: 2;
+        width: 50%;
+        font-family: monospace;
+        background-color: rgb(7, 7, 32);
+        color: whitesmoke;
+        height: 100%;
+        font-size: 1.2rem;
+      }
+
+      #request-result {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        display: block;
+        font-family: monospace;
+        white-space: pre;
+        margin: 1em 0;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="request-form">
+      <div class="request-container">
+        <select id="request-method-selector" name="request-method">
+          <option value="GET">GET</option>
+          <option value="POST">POST</option>
+          <option value="PUT">PUT</option>
+          <option value="DELETE">DELETE</option>
+        </select>
+        <input type="text" name="requestUrl" id="request-url-input" />
+        <button type="submit">Send Request</button>
+      </div>
+      <div class="input-output-section">
+        <textarea
+          id="request-body-data"
+          placeholder="{}"
+          cols="30"
+          rows="10"
+        ></textarea>
+
+        <div class="request-result-box">
+          <pre id="request-result"></pre>
+        </div>
+      </div>
+    </form>
+
+    <script>
+      const requestForm = document.getElementById("request-form");
+      const requestUrlInput = document.getElementById("request-url-input");
+      const requestBodyDataArea = document.getElementById("request-body-data");
+      const requestResult = document.getElementById("request-result");
+      const requestMethodSelector = document.getElementById(
+        "request-method-selector"
+      );
+
+      let apiData;
+
+      const setApiData = (value) => {
+        apiData = value;
+      };
+
+      const getApiResponse = (url, method, data) => {
+        switch (method) {
+          case "GET":
+            return fetch(url);
+          case "POST" | "PUT" | "DELETE":
+            return fetch(url, {
+              method,
+              headers: { "content-type": "application/json" },
+              body: JSON.stringify(data),
+            });
+        }
+      };
+
+      const sendRequest = (event) => {
+        event.preventDefault();
+        const requestUrl = requestUrlInput.value;
+        let bodyData = requestBodyDataArea.value;
+        const selectedMethod = requestMethodSelector.value;
+
+        if (bodyData) {
+          try {
+            bodyData = JSON.parse(bodyData);
+          } catch (error) {
+            bodyData = {};
+            alert("can only send json data");
+          }
+        } else {
+          bodyData = {};
+        }
+
+        getApiResponse(requestUrl, selectedMethod, bodyData)
+          .then((res) => res.text())
+          .then((data) => setApiData(data))
+          .catch((err) => console.log(err));
+
+        apiData
+          ? (requestResult.innerText = JSON.stringify(
+              JSON.parse(apiData),
+              null,
+              2
+            ))
+          : null;
+      };
+
+      requestForm.addEventListener("submit", sendRequest);
+    </script>
+  </body>
+</html>
