@@ -20,6 +20,33 @@
         width: 100%;
       }
 
+      #request-method-selector {
+        background-color: black;
+        padding: 5px 0;
+        color: white;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+
+      #request-method-selector option {
+        background-color: white;
+        color: black;
+      }
+
+      #submit-btn {
+        padding: 4px 8px 4px 8px;
+        border: none;
+        outline: none;
+        background-color: rgb(16, 99, 177);
+        color: white;
+        cursor: pointer;
+      }
+
+      #request-url-input {
+        padding: 0.2rem;
+      }
+
       .input-output-section {
         width: 100%;
         display: flex;
@@ -38,7 +65,7 @@
         flex-grow: 2;
         width: 50%;
         font-family: monospace;
-        background-color: rgb(7, 7, 32);
+        background-color: #070720;
         color: whitesmoke;
         height: 408px;
         font-size: 1.2rem;
@@ -65,7 +92,7 @@
           <option value="DELETE">DELETE</option>
         </select>
         <input type="text" name="requestUrl" id="request-url-input" />
-        <button id="submit-btn" type="submit">Send Request</button>
+        <button id="submit-btn" type="submit">Send</button>
       </div>
       <div class="input-output-section">
         <textarea

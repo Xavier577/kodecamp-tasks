@@ -6,7 +6,6 @@ const userRouter = express.Router();
 
 // get all users
 userRouter.get("/all", (req, res) => {
-  console.log(req.body);
   res.json(mockData);
 });
 
