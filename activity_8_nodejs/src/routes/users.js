@@ -25,7 +25,7 @@ userRouter.get("/:id", (req, res) => {
 // add a user
 userRouter.post("/new", (req, res) => {
   const { newUser } = req.body;
-  console.log(req.body);
+
   if (newUser && newUser?.id) {
     const userWithThatId = mockData.find(
       (userData) => userData.id === newUser.id
