@@ -92,8 +92,10 @@
       );
 
       const getApiResponse = (url, method, data) => {
-        if (method === "GET") {
-          return fetch(url);
+        if (method === "GET" || method === "DELETE") {
+          return fetch(url, {
+            method,
+          });
         } else {
           return fetch(url, {
             method,
@@ -109,8 +111,6 @@
         let requestUrl = requestUrlInput.value;
         let bodyData = requestBodyDataArea.value;
         let selectedMethod = requestMethodSelector.value || "GET";
-
-        console.log(requestUrl, bodyData, selectedMethod);
 
         if (bodyData && bodyData !== " ") {
           try {
