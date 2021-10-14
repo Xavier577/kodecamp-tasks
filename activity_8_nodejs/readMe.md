@@ -18,10 +18,10 @@ yarn dev
 
 # To test the api
 
-I have made a front end to test the api. Simply just go to localhost:8080 on your computer
+I have made a front end to test the api. Simply just go to localhost:8080 on your browser
 and you should see this page:
 
-<img src="./api_tester.png" alt="api_tester">ds
+<img src="./api_tester.png" alt="api_tester">
 
 # How to run queries
 
