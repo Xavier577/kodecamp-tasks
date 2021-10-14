@@ -65,7 +65,7 @@ example,
 
 ```
 POST /user/new
-// in the textarea in the api tester(frontend) (all data are to be sent in json formate)
+// in the textarea in the api tester(frontend) (all data are to be sent in json format)
 {  "newUser": {
   "id": 4,
   "firstName": "kyle",
