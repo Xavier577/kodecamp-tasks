@@ -1,0 +1,16 @@
+{
+  "name": "activity_8_nodejs",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "multer": "^1.4.3"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.13"
+  }
+}

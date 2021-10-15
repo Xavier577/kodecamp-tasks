@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rest api tester</title>
+    <style>
+      body {
+        background-color: whitesmoke;
+      }
+
+      #request-form {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 40px;
+        width: 100%;
+      }
+
+      #request-method-selector {
+        background-color: black;
+        padding: 5px 0;
+        color: white;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+
+      #request-method-selector option {
+        background-color: white;
+        color: black;
+      }
+
+      #submit-btn {
+        padding: 4px 8px 4px 8px;
+        border: none;
+        outline: none;
+        background-color: rgb(16, 99, 177);
+        color: white;
+        cursor: pointer;
+      }
+
+      #request-url-input {
+        padding: 0.2rem;
+      }
+
+      .input-output-section {
+        width: 100%;
+        display: flex;
+        height: 400px;
+      }
+
+      textarea {
+        font-family: monospace;
+        height: 100%;
+        width: 50%;
+        font-size: 1.2rem;
+        resize: horizontal;
+      }
+
+      .request-result-box {
+        flex-grow: 2;
+        width: 50%;
+        font-family: monospace;
+        background-color: #070720;
+        color: whitesmoke;
+        height: 408px;
+        font-size: 1.2rem;
+      }
+
+      #request-result {
+        width: 100%;
+        height: 100%;
+        overflow-y: auto;
+        display: block;
+        font-family: monospace;
+        white-space: pre;
+        margin: 1em 0;
+        padding-bottom: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <form id="request-form" enctype="multipart/form-data">
+      <div class="request-container">
+        <select id="request-method-selector" name="request-method">
+          <option value="GET" selected>GET</option>
+          <option value="POST">POST</option>
+          <option value="PUT">PUT</option>
+          <option value="DELETE">DELETE</option>
+        </select>
+        <input type="text" name="requestUrl" id="request-url-input" />
+        <button id="submit-btn" type="submit">Send</button>
+      </div>
+      <input type="file" name="avatar" id="avatar" />
+      <div class="input-output-section">
+        <textarea
+          id="request-body-data"
+          placeholder="{}"
+          cols="30"
+          rows="10"<input type="file" name="avatar" id="avatar" />
+        ></textarea>
+
+        <div class="request-result-box">
+          <pre id="request-result"></pre>
+        </div>
+      </div>
+    </form>
+
+    <script>
+      const requestForm = document.getElementById("request-form");
+      const requestUrlInput = document.getElementById("request-url-input");
+      const requestBodyDataArea = document.getElementById("request-body-data");
+      const requestResult = document.getElementById("request-result");
+      const submitBtn = document.getElementById("submit-btn");
+      const requestMethodSelector = document.getElementById(
+        "request-method-selector"
+      );
+
+      const getApiResponse = (url, method, data) => {
+        if (method === "GET" || method === "DELETE") {
+          return fetch(url, {
+            method,
+          });
+        } else {
+          return fetch(url, {
+            method,
+            headers: { "content-type": "application/json" },
+            body: JSON.stringify(data),
+          });
+        }
+      };
+
+      const sendRequest = (event) => {
+        event.preventDefault();
+
+        let requestUrl = requestUrlInput.value;
+        let bodyData = requestBodyDataArea.value;
+        let selectedMethod = requestMethodSelector.value || "GET";
+
+        if (bodyData && bodyData !== " ") {
+          try {
+            bodyData = JSON.parse(bodyData);
+          } catch (error) {
+            bodyData = {};
+            alert("can only send json data");
+          }
+        } else {
+          bodyData = {};
+        }
+
+        getApiResponse(requestUrl, selectedMethod, bodyData)
+          .then((res) => res.text())
+          .then((apiData) => {
+            if (apiData) {
+              try {
+                requestResult.innerText = JSON.stringify(
+                  JSON.parse(apiData),
+                  null,
+                  2
+                );
+              } catch (error) {
+                requestResult.innerText = apiData;
+              }
+            }
+          })
+          .catch((err) => {
+            console.log(err);
+            requestResult.innerText = err;
+          });
+      };
+
+      requestForm.addEventListener("submit", sendRequest);
+    </script>
+  </body>
+</html>

@@ -79,6 +79,7 @@
         font-family: monospace;
         white-space: pre;
         margin: 1em 0;
+        padding-bottom: 8px;
       }
     </style>
   </head>
@@ -165,7 +166,10 @@
               }
             }
           })
-          .catch((err) => console.log(err));
+          .catch((err) => {
+            console.log(err);
+            requestResult.innerText = err;
+          });
       };
 
       requestForm.addEventListener("submit", sendRequest);
