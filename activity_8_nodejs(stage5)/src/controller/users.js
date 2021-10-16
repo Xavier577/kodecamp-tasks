@@ -40,7 +40,7 @@ module.exports.addUser = (req, res) => {
         ? supportedFileExtensions.includes(fileExtension)
           ? (newUser.profileImage = `${file.destination}/${file.filename}`)
           : (msgObj = { ...msgObj, error: "image format not supported" })
-        : null;
+        : (newUser.profileImage = null);
 
       res.json(msgObj);
     }
