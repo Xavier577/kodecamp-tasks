@@ -2,7 +2,7 @@
 const Users = require("../model/database");
 const supportedFileExtensions = require("../helpers/supportedImageExt");
 const path = require("path");
-const { rmSync } = require("fs");
+const { rm } = require("fs");
 
 module.exports.getAllUsers = (req, res) => {
   if (Users.length > 0) res.json(Users);
@@ -24,8 +24,6 @@ module.exports.getUser = (req, res) => {
 module.exports.addUser = (req, res) => {
   const { newUser } = req.body;
   const { file } = req;
-
-  console.log(file); // remove this afterwards
 
   if (newUser && newUser?.id) {
     const user = Users.find((userData) => userData.id === newUser.id);
@@ -59,8 +57,6 @@ module.exports.updateUser = (req, res) => {
   const { firstName, lastName, address } = req.body;
 
   const { file } = req;
-
-  console.log(file); // remove this afterwards
 
   if (!isNaN(userId)) {
     const user = Users.find((user) => user.id === userId);
@@ -100,8 +96,20 @@ module.exports.deleteUser = (req, res) => {
   if (!isNaN(userId)) {
     const userIdx = Users.findIndex((user) => user.id === userId);
     const user = Users.find((user) => user.id === userId);
+    const profilePicture = user.profileImage
+      ? user.profileImage.split("/").at(-1)
+      : null;
 
     if (userIdx) {
+      if (profilePicture) {
+        rm(path.join(__dirname, "uploads", profilePicture), (error) => {
+          if (error.code === "ENOENT") {
+            console.log("user did not have a profile picture");
+          } else {
+            console.error(error);
+          }
+        });
+      }
       Users.splice(userIdx, 1);
       res.json({
         message: `successfully deleted user with id ${id}`,
