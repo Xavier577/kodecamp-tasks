@@ -1,7 +1,6 @@
 //@ts-check
 const express = require("express");
-const mockData = require("../model/database");
-const multer = require("multer");
+const upload = require("../helpers/upload");
 const {
   getAllUsers,
   getUser,
@@ -11,7 +10,6 @@ const {
 } = require("../controller/users");
 
 const userRouter = express.Router();
-const upload = multer({ dest: "uploads/" });
 
 // get all users
 userRouter.get("/all", getAllUsers);
