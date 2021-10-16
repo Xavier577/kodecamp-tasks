@@ -3,7 +3,6 @@ const requestUrlInput = document.getElementById("request-url-input");
 const requestBodyDataArea = document.getElementById("request-body-data");
 const requestResult = document.getElementById("request-result");
 const submitBtn = document.getElementById("submit-btn");
-const uploadForm = document.getElementById("file-upload-form");
 const requestMethodSelector = document.getElementById(
   "request-method-selector"
 );
@@ -14,8 +13,6 @@ const getApiResponse = (url, method, data) => {
       method,
     });
   } else {
-    uploadForm.setAttribute("action", url);
-    uploadForm.setAttribute("method", method);
     return fetch(url, {
       method,
       headers: { "content-type": "application/json" },
@@ -51,11 +48,6 @@ const sendRequest = (event) => {
             null,
             2
           );
-
-          //   if (selectedMethod === "POST" || selectedMethod === "PUT") {
-          //     uploadForm.submit();
-          //     window.location = "/";
-          //   }
         } catch (error) {
           requestResult.innerText = apiData;
         }

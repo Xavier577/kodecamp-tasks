@@ -18,10 +18,7 @@ yarn dev
 
 # To test the api
 
-I have made a front end to test the api. Simply just go to localhost:3000 on your browser
-and you should see this page:
-
-<img src="./api_tester.png" alt="api_tester">
+please use an api tool like insomnia that allow for sending multipart data so that you can upload images
 
 # How to run queries
 
