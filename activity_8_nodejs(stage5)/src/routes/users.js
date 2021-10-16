@@ -18,10 +18,10 @@ userRouter.get("/all", getAllUsers);
 userRouter.get("/:id", getUser);
 
 // add a user
-userRouter.post("/new", addUser);
+userRouter.post("/new", upload.single("profile_pic"), addUser);
 
 // update a user
-userRouter.put("/update/:id", updateUser);
+userRouter.put("/update/:id", upload.single("profile_pic"), updateUser);
 
 // delete a user
 userRouter.delete("/delete/:id", deleteUser);

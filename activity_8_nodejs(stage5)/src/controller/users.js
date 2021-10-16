@@ -1,5 +1,8 @@
 //@ts-check
 const Users = require("../model/database");
+const supportedFileExtensions = require("../helpers/supportedImageExt");
+const path = require("path");
+const { rmSync } = require("fs");
 
 module.exports.getAllUsers = (req, res) => {
   if (Users.length > 0) res.json(Users);
@@ -20,6 +23,9 @@ module.exports.getUser = (req, res) => {
 
 module.exports.addUser = (req, res) => {
   const { newUser } = req.body;
+  const { file } = req;
+
+  console.log(file); // remove this afterwards
 
   if (newUser && newUser?.id) {
     const user = Users.find((userData) => userData.id === newUser.id);
@@ -28,7 +34,17 @@ module.exports.addUser = (req, res) => {
       res.json({ message: `user with id ${newUser.id} already exists ` });
     } else {
       Users.push(newUser);
-      res.json({ message: "user sucessfully added" });
+      let msgObj = { message: "user successfully added" };
+      const fileExtension = path
+        .extname(file?.originalname || "")
+        .toLowerCase();
+      file
+        ? supportedFileExtensions.includes(fileExtension)
+          ? (newUser.profileImage = `${file.destination}/${file.filename}`)
+          : (msgObj = { ...msgObj, error: "image format not supported" })
+        : null;
+
+      res.json(msgObj);
     }
   } else {
     res
@@ -42,12 +58,22 @@ module.exports.updateUser = (req, res) => {
   const userId = parseInt(id);
   const { firstName, lastName, address } = req.body;
 
+  const { file } = req;
+
+  console.log(file); // remove this afterwards
+
   if (!isNaN(userId)) {
     const user = Users.find((user) => user.id === userId);
-
-    if (firstName || lastName || address) {
+    let msgObj = { message: "successfully updated user" };
+    if (firstName || lastName || address || file) {
       if (firstName) user.firstName = firstName;
       if (lastName) user.lastName = lastName;
+      if (file) {
+        const fileExtension = path.extname(file.originalname).toLowerCase();
+        supportedFileExtensions.includes(fileExtension)
+          ? (user.profileImage = `${file.destination}/${file.filename}`)
+          : (msgObj = { ...msgObj, error: "file format not supported" });
+      }
       if (address && (address.country || address.city)) {
         user.address = user.address
           ? {
@@ -58,7 +84,7 @@ module.exports.updateUser = (req, res) => {
               ...address,
             };
       }
-      res.json({ message: "successfully updated user" });
+      msgObj.error ? res.status(404).json(msgObj) : res.json(msgObj);
     } else {
       res.json({ message: " cannot update with empty fields" });
     }
