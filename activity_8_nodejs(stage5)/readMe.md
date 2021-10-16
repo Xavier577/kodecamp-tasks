@@ -1,6 +1,6 @@
 # Overview
 
-This is a test api that carries out crud operation on a mock data.
+This is a test api that carries out crud operation on a mock data. but this an upgrade from the previous one now you can add profile images for the users. supported image format include .jpg, .jpeg, .png
 
 # To run the environment
 

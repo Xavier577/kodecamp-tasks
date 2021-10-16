@@ -65,10 +65,25 @@ module.exports.updateUser = (req, res) => {
       if (firstName) user.firstName = firstName;
       if (lastName) user.lastName = lastName;
       if (file) {
+        const prevProfileImage = user.profileImage
+          ? user.profileImage.split("/").at(-1)
+          : null;
         const fileExtension = path.extname(file.originalname).toLowerCase();
         supportedFileExtensions.includes(fileExtension)
           ? (user.profileImage = `${file.destination}/${file.filename}`)
           : (msgObj = { ...msgObj, error: "file format not supported" });
+
+        if (prevProfileImage) {
+          rm(path.join(__dirname, "uploads", prevProfileImage), (error) => {
+            if (error.code === "ENOENT") {
+              console.log(
+                `${prevProfileImage} may have been deleted or renamed`
+              );
+            } else {
+              console.error(error);
+            }
+          });
+        }
       }
       if (address && (address.country || address.city)) {
         user.address = user.address
@@ -104,7 +119,9 @@ module.exports.deleteUser = (req, res) => {
       if (profilePicture) {
         rm(path.join(__dirname, "uploads", profilePicture), (error) => {
           if (error.code === "ENOENT") {
-            console.log("user did not have a profile picture");
+            console.log(
+              ` ${user.firstName} ${user.lastName} did not have a profile picture`
+            );
           } else {
             console.error(error);
           }
