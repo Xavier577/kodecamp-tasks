@@ -1,4 +1,5 @@
-import express from "express";
+// @ts-check
+const express = require("express");
 
 const indexRouter = express.Router();
 
@@ -6,4 +7,4 @@ indexRouter.get("/", (req, res) => {
   res.send("Hello world!");
 });
 
-export default indexRouter;
+module.exports = indexRouter;
