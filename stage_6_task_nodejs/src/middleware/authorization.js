@@ -4,10 +4,11 @@
  * @param {import("express").Request} req
  * @param {import("express").Response} res
  * @param {import("express").NextFunction} next
- * @returns {void}
+ * @returns {void| any}
  */
 // @ts-check
 const jwt = require("jsonwebtoken");
+const Users = require("../database/Users");
 
 /** @type Middleware */
 const authorization = (req, res, next) => {
@@ -19,6 +20,15 @@ const authorization = (req, res, next) => {
       return;
     }
     //@ts-ignore
+    const user = Users.find((user) => user.id === data.id);
+    if (!user)
+      return res
+        .status(404)
+        .json({
+          message:
+            "user with such token does not exist or must have been deleted",
+        });
+    // @ts-ignore
     res.locals.userId = data.id;
     next();
   } catch (err) {
