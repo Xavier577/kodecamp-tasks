@@ -58,7 +58,7 @@ curl -X POST http://localhost:3000/auth/login --header 'content-type: applicatio
 ```
 (Using curl syntax)
 
-curl -X GET http://localhost:3000/user/profile --header 'authorization: yourJwtToken'
+curl -X GET http://localhost:3000/user/profile --header 'Authorization: yourJwtToken'
 
 (example response if successful)
 "profile": {
