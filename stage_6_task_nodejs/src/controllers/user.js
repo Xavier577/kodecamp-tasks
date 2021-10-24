@@ -115,10 +115,10 @@ const updateUser = (req, res) => {
 };
 /**@type Middleware */
 const deleteUser = (req, res) => {
-  const id = res.locals.userId;
-  console.log(id, res.locals);
-  return;
-  if (!id)
+  const id = req.body.id;
+  const userWithId = Users.some((user) => user.id === id);
+
+  if (!id || !userWithId)
     return res
       .status(404)
       .json({ message: "user does not exist or has already been deleted" });
@@ -133,7 +133,6 @@ const deleteUser = (req, res) => {
     Profiles.splice(profileIdx, 1);
 
     res.status(200).json({ message: `${profile.userName} has been deleted ` });
-    res.redirect("/");
   } else res.status(500);
 };
 
