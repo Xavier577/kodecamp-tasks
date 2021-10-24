@@ -22,12 +22,10 @@ const authorization = (req, res, next) => {
     //@ts-ignore
     const user = Users.find((user) => user.id === data.id);
     if (!user)
-      return res
-        .status(404)
-        .json({
-          message:
-            "user with such token does not exist or must have been deleted",
-        });
+      return res.status(404).json({
+        message:
+          "user with such token does not exist or must have been deleted",
+      });
     // @ts-ignore
     res.locals.userId = data.id;
     next();
